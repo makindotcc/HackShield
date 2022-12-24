@@ -130,8 +130,8 @@ implements Listener {
     private void sendRegion(Player player, HackShieldAPI api, HackShieldUser user) {
         UUID regionId = UUID.randomUUID();
         RegionInfo region = new RegionInfo(regionId, -100, 0, -100, 100, 256, 100, false, false, false, Collections.emptySet());
-        region.setCancelBuildMessage((Component)Component.text((String)"&cNie mo\u017cesz stawia\u0107 blok\u00f3w na tym cuboidzie!"));
-        region.setCancelBreakMessage((Component)Component.text((String)"&cNie mo\u017cesz niszczy\u0107 blok\u00f3w na tym cuboidzie!"));
+        region.setCancelBuildMessage((Component)Component.text((String)"Nie mo\u017cesz stawia\u0107 blok\u00f3w na tym cuboidzie!").color(NamedTextColor.RED));
+        region.setCancelBreakMessage((Component)Component.text((String)"Nie mo\u017cesz niszczy\u0107 blok\u00f3w na tym cuboidzie!"));
         RegionPacket regionPacket = new RegionPacket(RegionPacket.Operation.ADD, Collections.singleton(region));
         api.sendPacket(user, (HsPacket)regionPacket);
         RegionPacket regionRemoveAllPacket = new RegionPacket();
@@ -144,8 +144,8 @@ implements Listener {
         region.setDestroyingAllowed(true);
         RegionPacket regionChangeFlagsPacket = new RegionPacket(RegionPacket.Operation.UPDATE_FLAGS, Collections.singleton(region));
         api.sendPacket(user, (HsPacket)regionChangeFlagsPacket);
-        region.setCancelBuildMessage((Component)Component.text((String)"&cNie mo\u017cesz stawia\u0107 blok\u00f3w na spawnie!"));
-        region.setCancelBreakMessage((Component)Component.text((String)"&cNie mo\u017cesz niszczy\u0107 blok\u00f3w na spawnie!"));
+        region.setCancelBuildMessage((Component)Component.text((String)"Nie mo\u017cesz stawia\u0107 blok\u00f3w na spawnie!").color(NamedTextColor.RED));
+        region.setCancelBreakMessage((Component)Component.text((String)"Nie mo\u017cesz niszczy\u0107 blok\u00f3w na spawnie!").color(NamedTextColor.RED));
         RegionPacket regionChangeMsgPacket = new RegionPacket(RegionPacket.Operation.UPDATE_FLAGS, Collections.singleton(region));
         api.sendPacket(user, (HsPacket)regionChangeMsgPacket);
     }
