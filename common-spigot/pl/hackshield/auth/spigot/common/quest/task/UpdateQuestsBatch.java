@@ -19,7 +19,7 @@ implements Runnable {
     private final SpigotCommon plugin;
     private final QuestManager questManager;
     private final List<QuestBatch> batchList = new ArrayList<QuestBatch>();
-    private int taskId = -1;
+    private Optional<Integer> taskId = Optional.empty();
 
     public UpdateQuestsBatch(SpigotCommon plugin, QuestManager questManager) {
         this.plugin = plugin;
@@ -31,9 +31,6 @@ implements Runnable {
     }
 
     public void stop() {
-        if (this.taskId > -1) {
-            // empty if block
-        }
     }
 
     @Override
