@@ -131,7 +131,7 @@ implements Listener {
         UUID regionId = UUID.randomUUID();
         RegionInfo region = new RegionInfo(regionId, -100, 0, -100, 100, 256, 100, false, false, false, Collections.emptySet());
         region.setCancelBuildMessage((Component)Component.text((String)"Nie mo\u017cesz stawia\u0107 blok\u00f3w na tym cuboidzie!").color(NamedTextColor.RED));
-        region.setCancelBreakMessage((Component)Component.text((String)"Nie mo\u017cesz niszczy\u0107 blok\u00f3w na tym cuboidzie!"));
+        region.setCancelBreakMessage((Component)Component.text((String)"Nie mo\u017cesz niszczy\u0107 blok\u00f3w na tym cuboidzie!").color(NamedTextColor.RED));
         RegionPacket regionPacket = new RegionPacket(RegionPacket.Operation.ADD, Collections.singleton(region));
         api.sendPacket(user, (HsPacket)regionPacket);
         RegionPacket regionRemoveAllPacket = new RegionPacket();
