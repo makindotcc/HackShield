@@ -38,7 +38,6 @@ implements PacketHandler {
 
     public void handlePacket(GamerInformationPacket packet) {
         CommonHackShieldUser user = this.connection.getUser();
-        user.setHardwareIds(packet.getHardwareIds());
         user.setMinecraftID(packet.getMinecraftAccountID());
         user.setToken(packet.getAuthToken());
     }

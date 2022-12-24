@@ -11,12 +11,10 @@ import pl.hackshield.auth.common.network.PacketHandler;
 public final class GamerInformationPacket
 implements HackShieldPacket {
     private final UUID minecraftAccountID;
-    private final String[] hardwareIds;
     private final String authToken;
 
     public GamerInformationPacket(IPacketBuffer packetBuffer) {
         this.minecraftAccountID = packetBuffer.readUUID();
-        this.hardwareIds = packetBuffer.readStringArray(32767);
         this.authToken = packetBuffer.readString(1024);
         if (packetBuffer.getBuffer().isReadable()) {
             packetBuffer.getBuffer().skipBytes(packetBuffer.getBuffer().readableBytes());
@@ -35,10 +33,6 @@ implements HackShieldPacket {
 
     public UUID getMinecraftAccountID() {
         return this.minecraftAccountID;
-    }
-
-    public String[] getHardwareIds() {
-        return this.hardwareIds;
     }
 
     public String getAuthToken() {

@@ -51,7 +51,7 @@ implements Listener {
         }
         if (!uuid.equals(user.getMinecraftID())) {
             this.kick(event, "&cNie uda\u0142o si\u0119 zweryfikowa\u0107 Twojej sesji!");
-            this.logSecurityViolation(uuid, event.getName(), user.getHardwareIds(), "UUID inconsistency " + user.getMinecraftID().toString() + " != " + uuid + ", probably malicious user!");
+            this.logSecurityViolation(uuid, event.getName(), "UUID inconsistency " + user.getMinecraftID().toString() + " != " + uuid + ", probably malicious user!");
             return;
         }
         try {
@@ -82,8 +82,8 @@ implements Listener {
         event.setLoginResult(AsyncPlayerPreLoginEvent.Result.KICK_OTHER);
     }
 
-    private void logSecurityViolation(UUID uuid, String username, String[] hardwareIdParts, String message) {
-        String identifier = "[" + username + "/" + uuid + "/" + Arrays.toString(hardwareIdParts).substring(1);
+    private void logSecurityViolation(UUID uuid, String username, String message) {
+        String identifier = "[" + username + "/" + uuid;
         this.plugin.getLogger().warning(identifier + " " + message);
     }
 }

@@ -22,7 +22,6 @@ implements HackShieldPacket {
         this.user.setMinecraftID(packetBuffer.readUUID());
         this.user.setAccountID(packetBuffer.readUUID());
         this.user.setCurrentBattlePassPremium(packetBuffer.getBuffer().readBoolean());
-        this.user.setHardwareIds(packetBuffer.readStringArray());
     }
 
     @Override
@@ -34,7 +33,6 @@ implements HackShieldPacket {
         packetBuffer.writeUUID(this.user.getMinecraftID());
         packetBuffer.writeUUID(this.user.getAccountID());
         packetBuffer.getBuffer().writeBoolean(this.user.isCurrentBattlePassPremium());
-        packetBuffer.writeStringArray(this.user.getHardwareIds());
     }
 
     @Override

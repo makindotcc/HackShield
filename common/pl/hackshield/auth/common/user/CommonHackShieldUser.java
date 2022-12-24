@@ -18,7 +18,6 @@ implements HackShieldUser {
     private UUID accountID;
     public boolean currentBattlePassPremium;
     private byte authorizationLevel;
-    private String[] hardwareIds;
     @Nullable
     private String token;
     private IHackShieldConnection connection;
@@ -56,22 +55,12 @@ implements HackShieldUser {
         return this.accountID;
     }
 
-    @Override
-    @Nullable(value="before pre login state")
-    public final @Nullable(value="before pre login state") String[] getHardwareIds() {
-        return this.hardwareIds;
-    }
-
     public void setCurrentBattlePassPremium(boolean currentBattlePassPremium) {
         this.currentBattlePassPremium = currentBattlePassPremium;
     }
 
     public boolean isCurrentBattlePassPremium() {
         return this.currentBattlePassPremium;
-    }
-
-    public final void setHardwareIds(@NotNull String[] hardwareIds) {
-        this.hardwareIds = Objects.requireNonNull(hardwareIds, "Hardware IDs cannot be null!");
     }
 
     public final void setMinecraftID(@NotNull UUID minecraftID) {

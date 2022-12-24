@@ -54,7 +54,7 @@ public final class GameProfileRequestListener {
         HackShieldPlugin hackShieldPlugin = this.plugin.getHackShieldPlugin();
         if (event.isOnlineMode() && !profile.getId().equals(user.getMinecraftID())) {
             delegate.disconnect(hackShieldPlugin.getPrefix().append((Component)Component.text((String)"Nie uda\u0142o si\u0119 zweryfikowa\u0107 Twojej sesji!", (TextColor)NamedTextColor.RED)));
-            this.logSecurityViolation(profile, user.getHardwareIds(), "UUID inconsistency " + user.getMinecraftID().toString() + " != " + profile.getId().toString() + ", probably malicious user!");
+            this.logSecurityViolation(profile, "UUID inconsistency " + user.getMinecraftID().toString() + " != " + profile.getId().toString() + ", probably malicious user!");
             return;
         }
         try {
@@ -80,8 +80,8 @@ public final class GameProfileRequestListener {
         }
     }
 
-    private void logSecurityViolation(GameProfile profile, String[] hardwareIdParts, String message) {
-        String identifier = "[" + profile.getName() + "/" + profile.getId().toString() + "/" + Arrays.toString(hardwareIdParts).substring(1);
+    private void logSecurityViolation(GameProfile profile, String message) {
+        String identifier = "[" + profile.getName() + "/" + profile.getId().toString();
         this.plugin.getLogger().warning(identifier + " " + message);
     }
 }

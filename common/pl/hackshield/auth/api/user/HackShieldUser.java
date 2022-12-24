@@ -13,9 +13,6 @@ public interface HackShieldUser {
     @Nullable(value="before HackShield API request")
     public @Nullable(value="before HackShield API request") UUID getAccountID();
 
-    @Nullable(value="before pre login state")
-    public @Nullable(value="before pre login state") String[] getHardwareIds();
-
     public boolean isAuthorized();
 }
 
