@@ -1,2 +1,2 @@
 # HackShield
-Klient Anti-Cheat, którego zadaniem jest całkowite wyeliminowanie cheaterów z serwerów objętych naszą ochroną
+Z racji, iż mamy święta - ja (Sh0ter) oraz cała ekipa HackShield postanowiliśmy ułatwić rozwój naszej ognistej konkurencji i udostępnić w pełni wszystkie nasze pluginy. Od tej pory rozwój HackShield będzie przebiegał w pełni transperentnie i kod będzie widoczny dla wszystkich. Mamy nadzieję, że finalnie pchnie to polskie społeczeństwo Minecrafta do przodu i przyniesie wiele dobrego. WESOŁYCH ŚWIĄT!
