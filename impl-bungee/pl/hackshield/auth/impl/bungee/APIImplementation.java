@@ -39,7 +39,7 @@ implements HackShieldAPI {
     private final Implementation plugin;
 
     public HackShieldUser getUser(UUID uuid) {
-        ProxiedPlayer player = Optional.of(this.plugin.getServer().getPlayer(uuid)).orElseThrow(() -> new IllegalArgumentException("Not found Player with uuid '" + uuid + "'!"));
+        ProxiedPlayer player = Optional.ofNullable(this.plugin.getServer().getPlayer(uuid)).orElseThrow(() -> new IllegalArgumentException("Not found Player with uuid '" + uuid + "'!"));
         return this.getUser(player);
     }
 
@@ -52,7 +52,7 @@ implements HackShieldAPI {
     public void sendPacket(HackShieldUser hackShieldUser, HsPacket packet) {
         CommonHackShieldUser user = (CommonHackShieldUser)hackShieldUser;
         Channel channel = user.getConnection().getChannel();
-        HackShieldPacket wrapped = Optional.of(ConnectionProtocol.warpPacket((HsPacket)packet)).orElseThrow(() -> new IllegalStateException("Not found wrapper for " + packet.getClass().getSimpleName()));
+        HackShieldPacket wrapped = Optional.ofNullable(ConnectionProtocol.warpPacket((HsPacket)packet)).orElseThrow(() -> new IllegalStateException("Not found wrapper for " + packet.getClass().getSimpleName()));
         channel.writeAndFlush((Object)wrapped, channel.voidPromise());
     }
 
@@ -60,7 +60,7 @@ implements HackShieldAPI {
         CommonHackShieldUser user = (CommonHackShieldUser)hackShieldUser;
         Channel channel = user.getConnection().getChannel();
         collection.forEach(packet -> {
-            HackShieldPacket wrapped = Optional.of(ConnectionProtocol.warpPacket((HsPacket)packet)).orElseThrow(() -> new IllegalStateException("Not found wrapper for " + packet.getClass().getSimpleName()));
+            HackShieldPacket wrapped = Optional.ofNullable(ConnectionProtocol.warpPacket((HsPacket)packet)).orElseThrow(() -> new IllegalStateException("Not found wrapper for " + packet.getClass().getSimpleName()));
             channel.write((Object)wrapped, channel.voidPromise());
         });
         channel.flush();

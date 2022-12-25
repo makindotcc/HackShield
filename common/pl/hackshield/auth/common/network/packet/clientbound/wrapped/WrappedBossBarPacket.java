@@ -17,7 +17,7 @@ implements HackShieldPacket {
     private final BossBarPacket packet;
 
     public WrappedBossBarPacket(HsPacket packet) {
-        this.packet = Optional.of(packet).map(p -> (BossBarPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to BossBarPacket"));
+        this.packet = Optional.ofNullable(packet).map(p -> (BossBarPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to BossBarPacket"));
     }
 
     public WrappedBossBarPacket(IPacketBuffer packetBuffer) {

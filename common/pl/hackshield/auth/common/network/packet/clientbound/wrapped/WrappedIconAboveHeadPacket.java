@@ -16,7 +16,7 @@ implements HackShieldPacket {
     private final IconAboveHeadPacket packet;
 
     public WrappedIconAboveHeadPacket(HsPacket packet) {
-        this.packet = Optional.of(packet).map(p -> (IconAboveHeadPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to WaypointPacket"));
+        this.packet = Optional.ofNullable(packet).map(p -> (IconAboveHeadPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to WaypointPacket"));
     }
 
     public WrappedIconAboveHeadPacket(IPacketBuffer packetBuffer) {

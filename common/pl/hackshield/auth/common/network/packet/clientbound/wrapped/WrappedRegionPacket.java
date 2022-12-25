@@ -22,7 +22,7 @@ implements HackShieldPacket {
     private final RegionPacket packet;
 
     public WrappedRegionPacket(HsPacket packet) {
-        this.packet = Optional.of(packet).map(p -> (RegionPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to RegionPacket"));
+        this.packet = Optional.ofNullable(packet).map(p -> (RegionPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to RegionPacket"));
     }
 
     public WrappedRegionPacket(IPacketBuffer packetBuffer) {

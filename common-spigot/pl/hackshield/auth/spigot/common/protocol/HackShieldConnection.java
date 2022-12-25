@@ -104,7 +104,7 @@ implements IHackShieldConnection {
         } else {
             String className = msg.getClass().getSimpleName();
             if (className.equals("PacketHandshakingInSetProtocol")) {
-                IPacketHandshakingInSetProtocol wrapped = Optional.of(msg).map(this.handshakeWrapper).orElseThrow(() -> new IllegalStateException("Cant wrap Handshake packet!"));
+                IPacketHandshakingInSetProtocol wrapped = Optional.ofNullable(msg).map(this.handshakeWrapper).orElseThrow(() -> new IllegalStateException("Cant wrap Handshake packet!"));
                 HandshakePacket handshakePacket = new HandshakePacket(wrapped.getProtocolVersion(), wrapped.getServerAddress(), wrapped.getPort(), wrapped.getNextStatus());
                 this.packetHandler.handlePacket(handshakePacket);
                 if (!handshakePacket.getServerAddress().equals(wrapped.getServerAddress())) {

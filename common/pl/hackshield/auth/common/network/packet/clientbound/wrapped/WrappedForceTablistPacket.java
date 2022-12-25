@@ -15,7 +15,7 @@ implements HackShieldPacket {
     private final ForceTablistPacket packet;
 
     public WrappedForceTablistPacket(HsPacket packet) {
-        this.packet = Optional.of(packet).map(p -> (ForceTablistPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to ForceTablistPacket"));
+        this.packet = Optional.ofNullable(packet).map(p -> (ForceTablistPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to ForceTablistPacket"));
     }
 
     public WrappedForceTablistPacket(IPacketBuffer packetBuffer) {

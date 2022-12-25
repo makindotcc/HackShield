@@ -15,7 +15,7 @@ implements HackShieldPacket {
     private final UniqueMessagePacket packet;
 
     public WrappedUniqueMessagePacket(HsPacket packet) {
-        this.packet = Optional.of(packet).map(p -> (UniqueMessagePacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to UniqueMessagePacket"));
+        this.packet = Optional.ofNullable(packet).map(p -> (UniqueMessagePacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to UniqueMessagePacket"));
     }
 
     public WrappedUniqueMessagePacket(IPacketBuffer packetBuffer) {

@@ -23,7 +23,7 @@ implements HackShieldPacket {
     private final WaypointPacket packet;
 
     public WrappedWaypointPacket(HsPacket packet) {
-        this.packet = Optional.of(packet).map(p -> (WaypointPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to WaypointPacket"));
+        this.packet = Optional.ofNullable(packet).map(p -> (WaypointPacket)p).orElseThrow(() -> new IllegalArgumentException("Cannot wrap packet to WaypointPacket"));
     }
 
     public WrappedWaypointPacket(IPacketBuffer packetBuffer) {
