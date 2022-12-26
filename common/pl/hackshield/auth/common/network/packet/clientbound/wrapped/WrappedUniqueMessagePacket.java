@@ -24,7 +24,7 @@ implements HackShieldPacket {
 
     @Override
     public void write(IPacketBuffer packetBuffer) {
-        packetBuffer.writeVarInt(this.packet.getId());
+        packetBuffer.writeString(this.packet.getId().toString());
         packetBuffer.writeComponent(this.packet.getMessage());
     }
 

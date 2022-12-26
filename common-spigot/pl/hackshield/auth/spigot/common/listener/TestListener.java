@@ -33,6 +33,7 @@ package pl.hackshield.auth.spigot.common.listener;
 import java.awt.Color;
 import java.util.Collections;
 import java.util.UUID;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -68,13 +69,15 @@ implements Listener {
             player.sendMessage("Nie u\u017cywasz klienta HackShield :(");
             return;
         }
-        UniqueMessagePacket messagePacket = new UniqueMessagePacket(10, (Component)Component.text((String)"Wiadomo\u015b\u0107 z silnika spigot."));
+        UniqueMessagePacket messagePacket = new UniqueMessagePacket(Key.key("hackshield", "spigot_test"),
+                (Component)Component.text((String)"Wiadomo\u015b\u0107 z silnika spigot."));
         api.sendPacket(user, (HsPacket)messagePacket);
         player.sendMessage("Losowa wiadomo\u015b\u0107...");
         new BukkitRunnable(){
 
             public void run() {
-                UniqueMessagePacket messagePacket = new UniqueMessagePacket(10, (Component)Component.text((String)"Nadpisana wiadomo\u015b\u0107 o silniku."));
+                UniqueMessagePacket messagePacket = new UniqueMessagePacket(Key.key("hackshield", "spigot_test"), 
+                        (Component)Component.text((String)"Nadpisana wiadomo\u015b\u0107 o silniku."));
                 api.sendPacket(user, (HsPacket)messagePacket);
             }
         }.runTaskLater(this.plugin.getPlugin(), 100L);

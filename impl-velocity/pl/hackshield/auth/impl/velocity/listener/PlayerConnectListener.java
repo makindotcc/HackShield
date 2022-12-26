@@ -26,6 +26,7 @@ import com.velocitypowered.api.event.player.ServerPreConnectEvent;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
 import java.util.concurrent.TimeUnit;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import pl.hackshield.auth.api.HackShield;
 import pl.hackshield.auth.api.HackShieldAPI;
@@ -69,7 +70,8 @@ public class PlayerConnectListener {
                 player.sendMessage((Component)Component.text((String)"[VELO] Nie u\u017cywasz klienta HS!"));
                 return;
             }
-            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(11, (Component)Component.text((String)"Wiadomo\u015b\u0107 z silnika proxy!")));
+            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(Key.key("hackshield", "velocity_test"),
+                    (Component)Component.text((String)"Wiadomo\u015b\u0107 z silnika proxy!")));
         }).delay(10L, TimeUnit.SECONDS).schedule();
         this.plugin.getServer().getScheduler().buildTask((Object)this.plugin.getPlugin(), () -> player.sendMessage((Component)Component.text((String)"szummmmm... brrr"))).delay(11L, TimeUnit.SECONDS).schedule();
         this.plugin.getServer().getScheduler().buildTask((Object)this.plugin.getPlugin(), () -> {
@@ -79,7 +81,8 @@ public class PlayerConnectListener {
                 player.sendMessage((Component)Component.text((String)"[VELO] Nie u\u017cywasz klienta HS!"));
                 return;
             }
-            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(11, (Component)Component.text((String)"Nadpisana z silnika proxy!")));
+            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(Key.key("hackshield", "velocity_test"),
+                    (Component)Component.text((String)"Nadpisana z silnika proxy!")));
         }).delay(12L, TimeUnit.SECONDS).schedule();
     }
 

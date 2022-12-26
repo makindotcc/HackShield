@@ -17,6 +17,7 @@
 package pl.hackshield.auth.impl.bungee.listener;
 
 import java.util.concurrent.TimeUnit;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.ServerConnectEvent;
@@ -46,7 +47,8 @@ implements Listener {
                 player.sendMessage("[VELO] Nie u\u017cywasz klienta HS!");
                 return;
             }
-            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(11, (Component)Component.text((String)"Wiadomo\u015b\u0107 z silnika proxy!")));
+            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(Key.key("hackshield", "bungee_test_api"),
+                    (Component)Component.text((String)"Wiadomo\u015b\u0107 z silnika proxy!")));
         }, 10L, TimeUnit.SECONDS);
         this.plugin.getServer().getScheduler().schedule(this.plugin.getPlugin(), () -> player.sendMessage("szummmmm... brrr"), 11L, TimeUnit.SECONDS);
         this.plugin.getServer().getScheduler().schedule(this.plugin.getPlugin(), () -> {
@@ -56,7 +58,8 @@ implements Listener {
                 player.sendMessage("[VELO] Nie u\u017cywasz klienta HS!");
                 return;
             }
-            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(11, (Component)Component.text((String)"Nadpisana z silnika proxy!")));
+            api.sendPacket(hsUser, (HsPacket)new UniqueMessagePacket(Key.key("hackshield", "bungee_test_api"),
+                    (Component)Component.text((String)"Nadpisana z silnika proxy!")));
         }, 12L, TimeUnit.SECONDS);
     }
 
